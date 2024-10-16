@@ -1,8 +1,8 @@
 package ru.itmentor.spring.boot_security.demo.services;
 
-import org.springframework.security.core.userdetails.UserDetails;
+import ru.itmentor.spring.boot_security.demo.dto.UserDTO;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.validation.BindingResult;
 import ru.itmentor.spring.boot_security.demo.model.User;
 
 import java.util.List;
@@ -17,9 +17,11 @@ public interface UserServices extends UserDetailsService {
     void save (User user);
 
     void delete(Long id);
-
     void update(User user, Long id);
 
-    void register(User User);
+    void updateUserFromDTO(UserDTO userDTO, Long id);
+
+    void register(UserDTO userDTO);
+    UserDTO getUserDTO(Long id);
 
 }

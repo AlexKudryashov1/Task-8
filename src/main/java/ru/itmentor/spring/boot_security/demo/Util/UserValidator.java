@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+import ru.itmentor.spring.boot_security.demo.dto.UserDTO;
 import ru.itmentor.spring.boot_security.demo.model.User;
 import ru.itmentor.spring.boot_security.demo.services.UserServices;
 
@@ -24,8 +25,8 @@ public class UserValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        User user = (User) target;
-        if (userServices.findByUsername(user.getUsername()) != null) {
+        UserDTO userDTO = (UserDTO) target;
+        if (userServices.findByUsername(userDTO.getUsername()) != null) {
             errors.rejectValue("username", "", "User exist");
 
         }
